@@ -21,7 +21,7 @@ const maze2 = [
   [1,0,0,0,0,1,0,0,0,0,1,0,1,0,1],
   [1,1,1,1,0,1,1,1,1,0,1,1,1,0,1],
   [1,0,0,1,0,0,0,0,1,0,0,0,1,0,1],
-  [1,0,1,1,1,1,1,0,1,1,1,0,1,0,1],
+  [1,0,1,1,0,1,1,0,1,1,1,0,1,0,1],
   [1,0,1,0,0,0,1,0,0,0,1,0,1,0,1],
   [1,0,1,0,1,0,1,1,1,0,1,1,1,0,1],
   [1,0,0,0,1,0,0,0,1,0,0,0,0,0,1],
@@ -109,12 +109,23 @@ function setupMazeData(mazeIndex) {
 }
 
 document.addEventListener("keydown", (e) => {
+
+  const keys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
+  if (keys.includes(e.key)) e.preventDefault();
+
   switch (e.key) {
-    case "ArrowUp": movePlayer(0, -1); break;
-    case "ArrowDown": movePlayer(0, 1); break;
-    case "ArrowLeft": movePlayer(-1, 0); break;
-    case "ArrowRight": movePlayer(1, 0); break;
+    case "ArrowUp": 
+    case "w": movePlayer(0, -1); break;
+
+    case "ArrowDown": 
+    case "s": movePlayer(0, 1); break;
+
+    case "ArrowLeft": 
+    case "a": movePlayer(-1, 0); break;
+
+    case "ArrowRight": 
+    case "d": movePlayer(1, 0); break;
   }
 });
 
-setupMazeData(1);
+setupMazeData(2);
