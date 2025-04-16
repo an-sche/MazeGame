@@ -70,6 +70,24 @@ function generateNextMaze() {
     drawMaze();
 }
 
+
+//#region Controls
+
+const dirMap = {
+  up:    [0, -1],
+  down:  [0, 1],
+  left:  [-1, 0],
+  right: [1, 0],
+};
+
+document.querySelectorAll("#dpad button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const dir = btn.dataset.dir;
+    const [dx, dy] = dirMap[dir];
+    movePlayer(dx, dy);
+  });
+});
+
 document.addEventListener("keydown", (e) => {
 
     const keys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
@@ -89,3 +107,5 @@ document.addEventListener("keydown", (e) => {
         case "d": movePlayer(1, 0); break;
     }
 });
+
+//#endregion

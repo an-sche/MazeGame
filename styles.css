@@ -23,3 +23,25 @@
 .player {
     background-color: red;
 }
+
+
+#dpad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+#dpad button {
+  width: 75px;
+  height: 75px;
+  font-size: 24px;
+  border-radius: 8px;
+  background: #ddd;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+#dpad div {
+  display: flex;
+  gap: 5px;
+}
