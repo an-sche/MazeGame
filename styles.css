@@ -1,25 +1,25 @@
 #maze {
-  display: grid;
-  gap: 2px;
-  width: max-content;
-  margin: 20px auto;
+    display: grid;
+    gap: 2px;
+    width: max-content;
+    margin: 10px auto;
 }
 
 .cell {
-  width: 40px;
-  height: 40px;
-  background-color: white;
-  border: 1px solid #ddd;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
 }
 
 .wall {
-  background-color: #333;
+    background-color: #333;
 }
 
 .goal {
-  background-color: purple;
+    background-color: purple;
 }
 
 .player {
-  background-color: red;
+    background-color: red;
 }
