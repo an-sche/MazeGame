@@ -1,10 +1,11 @@
 import { mazes, generateSeenArray } from './mazes.js'
 
-let currentMazeIndex = -1 // start at -1 because we add 1 when generating next maze
+let currentMazeIndex = -1; // start at -1 because we add 1 when generating next maze
 let playerPos = { x: 1, y: 1 };
 let goal = { x: 8, y: 8 };
 let mazeData = [];
 let seen = [];
+let completedMazesCount = 0;
 const mazeEl = document.getElementById("maze");
 
 generateNextMaze();
@@ -36,6 +37,7 @@ function movePlayer(dx, dy) {
 
         if (playerPos.x === goal.x && playerPos.y === goal.y) {
             // we reset the game here... 
+            completedMazesCount++;
             generateNextMaze();
             return;
         }
@@ -52,6 +54,9 @@ function generateNextMaze() {
 
     const mazeTitleEl = document.getElementById("maze-title");
     mazeTitleEl.textContent = "Maze: " + (currentMazeIndex + 1);
+
+    const completedMazesEl = document.getElementById("completed-count");
+    completedMazesEl.textContent = "Completed: " + completedMazesCount;
 
     const height = mazeData.length;
     const width = mazeData[0].length;
