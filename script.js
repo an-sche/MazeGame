@@ -94,6 +94,10 @@ document.querySelectorAll("#dpad button").forEach(btn => {
 
 document.addEventListener("keydown", (e) => {
 
+    const mazeGameElement = document.getElementById("step2-game")
+    if (mazeGameElement && !mazeGameElement.classList.contains("active")) {
+        return;
+    }
     const keys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
     if (keys.includes(e.key)) e.preventDefault();
 
