@@ -9,18 +9,36 @@
 </head>
 
 <body>
-    <h3 id="maze-title" style="display: flex; justify-content: center;"></h3>
-    <h3 id="completed-count" style="display: flex; justify-content: center;"></h3>
+    <!-- Rules step in the State Machine -->
+    <div id="step1-rules" class="step active">
+        <h1 class="center-horizontal">Rules</h1>
+        <p>Your goal is to complete as many mazes as possible. A half finished maze does not count for any points.</p>
+        <p>You start in the top left and need to navigate to the bottom right using arrow keys / buttons on screen.</p>
+        <p>You cannot see the walls until you are close to them, but then you keep that information forever. Good Luck!</p>
 
-    <div id="maze"></div>
+        <button onclick="showNextStep()">Begin</button>
+    </div>
 
-    <div id="dpad">
-        <button data-dir="up">▲</button>
-        <div>
-            <button data-dir="left">◀</button>
-            <button data-dir="down">▼</button>
-            <button data-dir="right">▶</button>
+    <!-- Maze Step in the State Machine -->
+    <div id="step2-game" class="step">
+        <h3 id="maze-title" class="center-horizontal"></h3>
+        <h3 id="completed-count" class="center-horizontal"></h3>
+        <div id="maze"></div>
+        <div id="dpad">
+            <button data-dir="up">▲</button>
+            <div>
+                <button data-dir="left">◀</button>
+                <button data-dir="down">▼</button>
+                <button data-dir="right">▶</button>
+            </div>
         </div>
+        <button onclick="showNextStep()">Next</button>
+    </div>
+
+    <!-- Explanation Step in the State Machine -->
+    <div id="step3-explain" class="step">
+        <h1 class="center-horizontal">Explanation</h1>
+        <p>Let the engineers work.</p>
     </div>
 
     <script type="module" src="script.js"></script>

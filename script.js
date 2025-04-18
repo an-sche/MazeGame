@@ -1,4 +1,8 @@
 import { mazes, generateSeenArray } from './mazes.js'
+import { showNextStep } from './state.js'
+
+// This way the functions are available to me in the console / html
+window.showNextStep = showNextStep;
 
 let currentMazeIndex = -1; // start at -1 because we add 1 when generating next maze
 let playerPos = { x: 1, y: 1 };

@@ -45,3 +45,15 @@
   display: flex;
   gap: 5px;
 }
+
+.step {
+  display: none;
+}
+.step.active {
+  display: block;
+}
+
+.center-horizontal {
+  display: flex; 
+  justify-content: center;
+}
