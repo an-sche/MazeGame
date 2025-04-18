@@ -13,5 +13,5 @@ export function showNextStep() {
     });
 }
 
-var currentStep = 0;
+let currentStep = 0;
 const steps = ["step1-rules", "step2-game", "step3-explain"];
