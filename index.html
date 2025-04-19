@@ -9,6 +9,7 @@
 </head>
 
 <body>
+
     <!-- Rules step in the State Machine -->
     <div id="step1-rules" class="step active">
         <h1 class="center-horizontal">Rules</h1>
@@ -16,13 +17,15 @@
         <p>You start in the top left and need to navigate to the bottom right using arrow keys / buttons on screen.</p>
         <p>You cannot see the walls until you are close to them, but then you keep that information forever. Good Luck!</p>
 
-        <button onclick="showNextStep()">Begin</button>
+        <button id="begin-game" onclick="showNextStep()">Begin</button>
     </div>
 
     <!-- Maze Step in the State Machine -->
     <div id="step2-game" class="step">
-        <h3 id="maze-title" class="center-horizontal"></h3>
+        <h1 class="center-horizontal">Play</h1>
+        <!-- <h3 id="maze-title" class="center-horizontal" hidden=true></h3> -->
         <h3 id="completed-count" class="center-horizontal"></h3>
+        <!-- <h4 id="total-moves" class="center-horizontal">Moves: 0</h4> -->
         <div id="maze"></div>
         <div id="dpad">
             <button data-dir="up">▲</button>
@@ -32,13 +35,26 @@
                 <button data-dir="right">▶</button>
             </div>
         </div>
-        <button onclick="showNextStep()">Next</button>
+    </div>
+
+    <!-- Score step in the State Machine -->
+    <div id="step3-score" class="step">
+        <h1 class="center-horizontal">Score:</h1>
+        <h3 class="center-horizontal">Congrats! You completed:</h3>
+        <h4 class="center-horizontal score-total">- mazes!</h4>
+
+        <p>Was it frustrating to work with distractions?</p>
+        <button class="center-horizontal" onclick="showNextStep()">Yes, what do we do?</button>
     </div>
 
     <!-- Explanation Step in the State Machine -->
-    <div id="step3-explain" class="step">
+    <div id="step4-explain" class="step">
         <h1 class="center-horizontal">Explanation</h1>
-        <p>Let the engineers work.</p>
+
+        <!--TODO: Link to no-hello here -->
+        <p><b>Managers:</b> Let the engineers work. If you have to communicate, follow the <a href="https://nohello.net/">no hello</a> pattern.</p>
+        <p><b>Engineers:</b> Block out focus time on your calendar. Respect it.</p>
+
     </div>
 
     <script type="module" src="script.js"></script>
