@@ -39,5 +39,5 @@ export function getCurrentStep() {
 }
 
 let currentStep = 0;
-let rulesStep = 0, gameStep = 1, scoreStep = 2, explainStep = 3;
+const rulesStep = 0, gameStep = 1, scoreStep = 2, explainStep = 3;
 const steps = ["step1-rules", "step2-game", "step3-score", "step4-explain"];

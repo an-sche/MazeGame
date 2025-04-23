@@ -50,13 +50,13 @@ function movePlayer(dx, dy) {
         currentMazeMoves++;
 
         // When they are on maze 2, we will distract them with messages from their boss
-        if (completedMazesCount == 1) {
+        if (completedMazesCount === 1) {
             const distFromEnd = (goal.x - playerPos.x) + (goal.y - playerPos.y);
-            if (currentMazeMoves == 10) {
+            if (currentMazeMoves === 10) {
                 // First we just say, hi and ask if they got a sec
                 playerPos = { x: 1, y: 1 };
                 blockUserForInput("Boss: Hey!\n\nYou got a sec? (Type 'yes' to continue)", "yes");
-            } else if (!hasAskedYet && distFromEnd == 4) {
+            } else if (!hasAskedYet && distFromEnd === 4) {
                 // We eventually get to the point right before they finish the maze...
                 // This will reset their progress, very frustrating! 
                 hasAskedYet = true;
@@ -64,7 +64,9 @@ function movePlayer(dx, dy) {
                 seen = generateSeenArray(mazeData.length, mazeData[0].length);
                 blockUserForInput("Boss: I need you to reverse this string for me.\n. Thanks, always super helpful!\n\nsdaghwqhf", "fhqwhgads");
             }
-        } else if (completedMazesCount == 3)
+        } else if (completedMazesCount === 3) {
+
+        }
 
         // TODO: halfway through maze 4, we should alert them that they have a meeting soon!
         //       then we can start a timer, and then end the game in like 15 seconds or something
