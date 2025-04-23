@@ -4,6 +4,7 @@ import { showNextStep, isRulesStep, isGameStep, isExplainStep, goToGameStep, isS
 // This way the functions are available to me in the console / html
 window.showNextStep = showNextStep;
 window.goToGameStep = goToGameStep;
+window.setCompletedGames = setCompletedMazes;
 
 let currentMazeIndex = -1; // start at -1 because we add 1 when generating next maze
 let playerPos = { x: 1, y: 1 };
@@ -49,26 +50,21 @@ function movePlayer(dx, dy) {
         currentMazeMoves++;
 
         // When they are on maze 2, we will distract them with messages from their boss
-        if (completedMazesCount == 0) {
+        if (completedMazesCount == 1) {
             const distFromEnd = (goal.x - playerPos.x) + (goal.y - playerPos.y);
             if (currentMazeMoves == 10) {
-                // First we just say hi!
+                // First we just say, hi and ask if they got a sec
                 playerPos = { x: 1, y: 1 };
-                blockUserForInput("Boss: Hey!\n\n (Type 'hi' to continue)", "hi");
-            }
-            else if (currentMazeMoves == 30) {
-                // Message them again!
-                playerPos = { x: 1, y: 1 };
-                blockUserForInput("Boss: You got a sec?\n\n (type 'yes' to continue)", "yes");
+                blockUserForInput("Boss: Hey!\n\nYou got a sec? (Type 'yes' to continue)", "yes");
             } else if (!hasAskedYet && distFromEnd == 4) {
                 // We eventually get to the point right before they finish the maze...
                 // This will reset their progress, very frustrating! 
                 hasAskedYet = true;
                 playerPos = { x: 1, y: 1 };
                 seen = generateSeenArray(mazeData.length, mazeData[0].length);
-                blockUserForInput("Boss: I need you to copy and paste this text into the\nprompt. Thanks, always super helpful!\n\nsuper_secret_message_fhqwhgads", "super_secret_message_fhqwhgads");
+                blockUserForInput("Boss: I need you to reverse this string for me.\n. Thanks, always super helpful!\n\nsdaghwqhf", "fhqwhgads");
             }
-        }
+        } else if (completedMazesCount == 3)
 
         // TODO: halfway through maze 4, we should alert them that they have a meeting soon!
         //       then we can start a timer, and then end the game in like 15 seconds or something
@@ -98,6 +94,11 @@ function blockUserForInput(displayText, requiredInput) {
     }
 }
 
+function updateMazeScore() {
+    const completedMazesEl = document.getElementById("completed-count");
+    completedMazesEl.textContent = "Completed: " + completedMazesCount;
+}
+
 function generateNextMaze() {
     playerPos = { x: 1, y: 1 };
 
@@ -106,9 +107,7 @@ function generateNextMaze() {
 
     // const mazeTitleEl = document.getElementById("maze-title");
     // mazeTitleEl.textContent = "Maze: " + (currentMazeIndex + 1);
-
-    const completedMazesEl = document.getElementById("completed-count");
-    completedMazesEl.textContent = "Completed: " + completedMazesCount;
+    updateMazeScore();
 
     const height = mazeData.length;
     const width = mazeData[0].length;
@@ -175,3 +174,9 @@ document.addEventListener("keydown", (e) => {
 });
 
 //#endregion
+
+//#region Debugging help
+function setCompletedMazes(count) {
+    completedMazesCount = count;
+    updateMazeScore();
+}
