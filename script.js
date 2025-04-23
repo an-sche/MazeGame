@@ -56,7 +56,7 @@ function movePlayer(dx, dy) {
                 // First we just say, hi and ask if they got a sec
                 playerPos = { x: 1, y: 1 };
                 blockUserForInput("Boss: Hey!\n\nYou got a sec? (Type 'yes' to continue)", "yes");
-            } else if (!hasAskedYet && distFromEnd === 4) {
+            } else if (!hasAskedYet && distFromEnd === 2) {
                 // We eventually get to the point right before they finish the maze...
                 // This will reset their progress, very frustrating! 
                 hasAskedYet = true;
