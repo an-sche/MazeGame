@@ -14,24 +14,24 @@ export function showNextStep() {
 }
 
 export function goToGameStep() {
-    currentStep = 0;
+    currentStep = gameStep - 1;
     showNextStep();
 }
 
 export function isRulesStep() {
-    return currentStep === 0;
+    return currentStep === rulesStep;
 }
 
 export function isGameStep() {
-    return currentStep === 1;
+    return currentStep === gameStep;
 }
 
 export function isScoreStep() {
-    return currentStep === 2;
+    return currentStep === scoreStep;
 }
 
 export function isExplainStep() {
-    return currentStep === 3;
+    return currentStep === explainStep;
 }
 
 export function getCurrentStep() {
@@ -39,4 +39,5 @@ export function getCurrentStep() {
 }
 
 let currentStep = 0;
+let rulesStep = 1, gameStep = 2, scoreStep = 3, explainStep = 4;
 const steps = ["step1-rules", "step2-game", "step3-score", "step4-explain"];
